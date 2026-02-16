@@ -1,4 +1,5 @@
 import { View, Text, Button } from "react-native";
+import { styles } from "../styles/homeStyles";
 
 export default function HomeScreen({ navigation }: any) {
   return (
