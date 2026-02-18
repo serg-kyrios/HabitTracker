@@ -1,37 +1,32 @@
-import { StyleSheet, Animated } from "react-native";
+import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    padding: 20,
+    backgroundColor: "#111",
   },
+
   header: {
-    height: 120,
-    paddingTop: 50, // Status bar
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.3,
-    shadowRadius: 20,
-    elevation: 10, // Android тінь
-  },
-  content: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    paddingHorizontal: 20,
-  },
-  backButton: {
-    padding: 5,
-  },
-  title: {
-    flex: 1,
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: "bold",
     color: "white",
-    textAlign: "center",
+    marginBottom: 20,
   },
-  iconButton: {
-    padding: 5,
+
+  habitItem: {
+    padding: 16,
+    backgroundColor: "#222",
+    borderRadius: 12,
+    marginBottom: 10,
+  },
+
+  habitDone: {
+    backgroundColor: "#1e4620",
+  },
+
+  habitText: {
+    color: "white",
+    fontSize: 16,
   },
 });
