@@ -19,14 +19,21 @@ export const styles = StyleSheet.create({
     backgroundColor: "#222",
     borderRadius: 12,
     marginBottom: 10,
+    flexDirection: "row", // ✅ Рядок
+    alignItems: "center", // ✅ По центру
+    marginVertical: 4,
+    flexWrap: "nowrap", // ✅ НЕ переносити!
   },
 
   habitDone: {
     backgroundColor: "#1e4620",
+    opacity: 0.8,
   },
 
   habitText: {
-    color: "white",
+    flex: 1, // ✅ Займає решту місця
+    marginLeft: 12,
     fontSize: 16,
+    color: "white",
   },
 });

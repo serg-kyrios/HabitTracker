@@ -4,20 +4,23 @@ import { styles } from "../styles/homeStyles";
 import { Button } from "react-native";
 import { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
 import { RootTabParamList } from "../navigation/types";
+import { Ionicons } from "@expo/vector-icons";
 
 type Habit = {
   id: string;
   title: string;
   done: boolean;
+  iconName: string;
+  name?: string;
 };
 
 type Props = BottomTabScreenProps<RootTabParamList, "Habits">;
 
 export default function HomeScreen({ navigation }: Props) {
   const [habits, setHabits] = useState<Habit[]>([
-    { id: "1", title: "Drink water", done: false },
-    { id: "2", title: "Workout", done: false },
-    { id: "3", title: "Read 10 pages", done: false },
+    { iconName: "water-outline", id: "1", title: "Drink water", done: false },
+    { iconName: "fitness-outline", id: "2", title: "Workout", done: false },
+    { iconName: "book-outline", id: "3", title: "Read 10 pages", done: false },
   ]);
 
   const toggleHabit = (id: string) => {
@@ -43,9 +46,13 @@ export default function HomeScreen({ navigation }: Props) {
             style={[styles.habitItem, item.done && styles.habitDone]}
             onPress={() => toggleHabit(item.id)}
           >
+            <Ionicons
+              name={item.iconName as any}
+              size={24}
+              color={item.done ? "#10B981" : "#6B7280"}
+            />
             <Text style={styles.habitText}>
-              {item.done ? "✅ " : "⬜ "}
-              {item.title}
+              {item.done ? "✅" : "⬜"} {item.title}
             </Text>
           </Pressable>
         )}
