@@ -1,8 +1,8 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../screens/HomeScreen";
 import CalendarScreen from "../screens/CalendarScreen";
-
-const Tab = createBottomTabNavigator();
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { RootTabParamList } from "./types";
+const Tab = createBottomTabNavigator<RootTabParamList>();
 
 export default function TabNavigator() {
   return (

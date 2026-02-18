@@ -2,7 +2,8 @@ import { View, Text, FlatList, Pressable } from "react-native";
 import { useState } from "react";
 import { styles } from "../styles/homeStyles";
 import { Button } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
+import { RootTabParamList } from "../navigation/types";
 
 type Habit = {
   id: string;
@@ -10,7 +11,9 @@ type Habit = {
   done: boolean;
 };
 
-export default function HomeScreen({ navigation }) {
+type Props = BottomTabScreenProps<RootTabParamList, "Habits">;
+
+export default function HomeScreen({ navigation }: Props) {
   const [habits, setHabits] = useState<Habit[]>([
     { id: "1", title: "Drink water", done: false },
     { id: "2", title: "Workout", done: false },
