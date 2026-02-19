@@ -1,6 +1,7 @@
 import { View } from "react-native";
 import { Calendar } from "react-native-calendars";
 import { useState } from "react";
+import { colors } from "../styles/color";
 
 export default function CalendarScreen() {
   const [markedDates, setMarkedDates] = useState<MarkedDates>({});
@@ -25,7 +26,13 @@ export default function CalendarScreen() {
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: colors.backgroundColor,
+        opacity: 0.9,
+      }}
+    >
       <Calendar
         onDayPress={onDayPress}
         markedDates={markedDates}

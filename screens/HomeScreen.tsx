@@ -5,7 +5,7 @@ import { Button } from "react-native";
 import { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
 import { RootTabParamList } from "../navigation/types";
 import { Ionicons } from "@expo/vector-icons";
-
+import { colors } from "../styles/color";
 type Habit = {
   id: string;
   title: string;
@@ -21,6 +21,30 @@ export default function HomeScreen({ navigation }: Props) {
     { iconName: "water-outline", id: "1", title: "Drink water", done: false },
     { iconName: "fitness-outline", id: "2", title: "Workout", done: false },
     { iconName: "book-outline", id: "3", title: "Read 10 pages", done: false },
+    {
+      iconName: "medkit-outline",
+      id: "4",
+      title: "Take vitamins",
+      done: false,
+    },
+    {
+      iconName: "moon-outline",
+      id: "5",
+      title: "Go to bed early",
+      done: false,
+    },
+    {
+      iconName: "sun-outline",
+      id: "6",
+      title: "Sleep well",
+      done: false,
+    },
+    {
+      iconName: "walk-outline",
+      id: "7",
+      title: "Walk more",
+      done: false,
+    },
   ]);
 
   const toggleHabit = (id: string) => {
@@ -30,13 +54,17 @@ export default function HomeScreen({ navigation }: Props) {
   };
 
   return (
-    <View style={styles.container}>
+    <View
+      style={[styles.container, { backgroundColor: colors.backgroundColor }]}
+    >
       <Button
         title="Open calendar"
         onPress={() => navigation.navigate("Calendar")}
       />
 
-      <Text style={styles.header}>Habit Tracker</Text>
+      <Text style={[styles.header, { color: colors.text.forTheMain }]}>
+        Habit Tracker
+      </Text>
 
       <FlatList
         data={habits}

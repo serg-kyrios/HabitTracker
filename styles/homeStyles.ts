@@ -4,14 +4,21 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: "#111",
+    //backgroundColor: "#111",
   },
 
   header: {
-    fontSize: 26,
+    fontStyle: "italic", // ✅ Стиль
+    color: "#FFFFFF", // ✅ Колір
+    lineHeight: 28, // ✅ Відстань між рядками
+    letterSpacing: 1, // ✅ Відстань між буквами
+    fontSize: 36,
     fontWeight: "bold",
-    color: "white",
     marginBottom: 20,
+    alignContent: "center",
+    textAlign: "center",
+    padding: 20,
+    marginTop: 20,
   },
 
   habitItem: {
