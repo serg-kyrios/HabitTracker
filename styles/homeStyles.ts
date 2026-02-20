@@ -43,4 +43,23 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     color: "white",
   },
+  input: {
+    borderWidth: 1,
+    borderColor: "#ccc",
+    padding: 10,
+    borderRadius: 8,
+    marginVertical: 8,
+    backgroundColor: "#fafafa", // світлий фон
+    color: "#111", // темний текст
+  },
+  progress: {
+    fontSize: 16,
+    textAlign: "center",
+    marginBottom: 10,
+    color: "#666",
+  },
+  button: {
+    backgroundColor: "#4caf50",
+    padding: 10,
+  },
 });

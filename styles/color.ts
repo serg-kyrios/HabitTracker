@@ -57,3 +57,13 @@ export const statColors: Record<Stat, string> = {
   "special-defense": "#A7DB8D",
   speed: "#FA92B2",
 };
+
+// 🎨 Круті gradient комбінації
+// 🌊 Ocean
+// ["#2193b0", "#6dd5ed"]
+// 🔥 Sunset
+// ["#ff512f", "#dd2476"]
+// 🌌 Neon
+// ["#8E2DE2", "#4A00E0"]
+// 🍃 Fresh
+// ["#11998e", "#38ef7d"]

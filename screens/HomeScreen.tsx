@@ -1,22 +1,31 @@
-import { View, Text, FlatList, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  Pressable,
+  TextInput,
+  Button,
+} from "react-native";
 import { useState } from "react";
 import { styles } from "../styles/homeStyles";
-import { Button } from "react-native";
 import { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
 import { RootTabParamList } from "../navigation/types";
 import { Ionicons } from "@expo/vector-icons";
 import { colors } from "../styles/color";
+import { RootStackParamList } from "../navigation/RootNavigator";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import AppButton from "../components/AppButton";
+
 type Habit = {
   id: string;
   title: string;
   done: boolean;
   iconName: string;
-  name?: string;
 };
 
 type Props = BottomTabScreenProps<RootTabParamList, "Habits">;
 
-export default function HomeScreen({ navigation }: Props) {
+export default function HomeScreen({ navigation, route }: Props) {
   const [habits, setHabits] = useState<Habit[]>([
     { iconName: "water-outline", id: "1", title: "Drink water", done: false },
     { iconName: "fitness-outline", id: "2", title: "Workout", done: false },
@@ -33,19 +42,11 @@ export default function HomeScreen({ navigation }: Props) {
       title: "Go to bed early",
       done: false,
     },
-    {
-      iconName: "sun-outline",
-      id: "6",
-      title: "Sleep well",
-      done: false,
-    },
-    {
-      iconName: "walk-outline",
-      id: "7",
-      title: "Walk more",
-      done: false,
-    },
+    { iconName: "sun-outline", id: "6", title: "Sleep well", done: false },
+    { iconName: "walk-outline", id: "7", title: "Walk more", done: false },
   ]);
+
+  const [newHabit, setNewHabit] = useState("");
 
   const toggleHabit = (id: string) => {
     setHabits((prev) =>
@@ -53,11 +54,31 @@ export default function HomeScreen({ navigation }: Props) {
     );
   };
 
+  const resetHabits = () => {
+    setHabits((prev) => prev.map((h) => ({ ...h, done: false })));
+  };
+
+  const addHabit = () => {
+    if (!newHabit.trim()) return;
+
+    const newItem: Habit = {
+      id: Date.now().toString(),
+      title: newHabit.trim(),
+      done: false,
+      iconName: "star-outline",
+    };
+
+    setHabits((prev) => [...prev, newItem]);
+    setNewHabit("");
+  };
+
+  const doneCount = habits.filter((h) => h.done).length;
+
   return (
     <View
       style={[styles.container, { backgroundColor: colors.backgroundColor }]}
     >
-      <Button
+      <AppButton
         title="Open calendar"
         onPress={() => navigation.navigate("Calendar")}
       />
@@ -65,6 +86,20 @@ export default function HomeScreen({ navigation }: Props) {
       <Text style={[styles.header, { color: colors.text.forTheMain }]}>
         Habit Tracker
       </Text>
+
+      <Text style={styles.progress}>
+        Today: {doneCount}/{habits.length}
+      </Text>
+
+      <TextInput
+        value={newHabit}
+        onChangeText={setNewHabit}
+        placeholder="New habit"
+        style={styles.input}
+      />
+
+      <AppButton title="Add habit" onPress={addHabit} />
+      <AppButton title="Reset day" onPress={resetHabits} />
 
       <FlatList
         data={habits}
@@ -79,6 +114,7 @@ export default function HomeScreen({ navigation }: Props) {
               size={24}
               color={item.done ? "#10B981" : "#6B7280"}
             />
+
             <Text style={styles.habitText}>
               {item.done ? "✅" : "⬜"} {item.title}
             </Text>

@@ -5,7 +5,15 @@ import AddHabitScreen from "../screens/AddHabitScreen";
 import LoadingScreen from "../screens/LoadingScreen";
 import CalendarScreen from "../screens/CalendarScreen";
 
-const Stack = createNativeStackNavigator();
+export type RootStackParamList = {
+  Home: undefined;
+  Habits: undefined;
+  Loading: undefined;
+  AddHabit: undefined;
+  Calendar: undefined;
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function RootNavigator() {
   return (
